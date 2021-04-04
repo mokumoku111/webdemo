@@ -46,7 +46,7 @@ session_start();
             <section class="panel">
               <header class="panel-heading wht-bg">
                 <h4 class="gen-case">
-                  ระบบจองสระ
+                  ระบบจองสระว่ายน้ำชนเห็นชอบ
                   <form action="#" class="pull-right mail-src-position">
                     
                       <div class="top-menu">

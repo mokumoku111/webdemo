@@ -5,7 +5,7 @@ $USER = $_SESSION["Member_Username"];
 
 ?>
 <!--logo start-->
-<a href="#" class="logo"><b>ระบบจองสระ<span>อิอิ</span></b></a>
+<a href="#" class="logo"><b><span>ระบบจองสระ</span></b></a>
 <!--logo end-->
 <div class="nav notify-row" id="top_menu">
   <!--  notification start -->
@@ -40,18 +40,24 @@ $USER = $_SESSION["Member_Username"];
       <li class="mt">
         <a href="index_login.php">
           <i class="fa fa-thumb-tack"></i>
-          <span>จองไอ้สัส</span>
+          <span>จองเวลา</span>
         </a>
       </li>
       <li class="sub-menu">
         <a href="profile.php">
-          <i class="fa fa-github-alt"></i>
+          <i class="fa fa-cogs"></i>
+          <span>แก้ไขการจอง</span>
+        </a>
+      </li>
+      <li class="sub-menu">
+        <a href="profile.php">
+          <i class="fa fa-user"></i>
           <span>แก้ไขโปรไฟล์</span>
         </a>
       </li>
       <li class="sub-menu">
         <a href="logout.php">
-          <i class="fa fa-user"></i>
+          <i class="fa fa-sign-out"></i>
           <span>Logout</span>
         </a>
       </li>

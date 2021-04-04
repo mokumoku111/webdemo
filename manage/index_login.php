@@ -13,7 +13,7 @@ if (empty($_SESSION["Member_Username"])) {
   <meta name="description" content="">
   <meta name="author" content="Dashboard">
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <title>Dashio - Bootstrap Admin Template</title>
+  <title>ระบบจองสระว่ายน้ำชนเห็นชอบ</title>
 
   <!-- Favicons -->
   <link href="img/favicon.png" rel="icon">
@@ -52,7 +52,7 @@ if (empty($_SESSION["Member_Username"])) {
               <section class="panel">
                 <header class="panel-heading wht-bg">
                   <h4 class="gen-case">
-                    ควย
+                    จองเวลาการใช้สระ
 
                   </h4>
                 </header>
@@ -84,17 +84,14 @@ if (empty($_SESSION["Member_Username"])) {
 
                             <tr class="unread">
                               <td class="inbox-small-cells">
-                                
+
                               </td>
                               <td class="inbox-small-cells"></td>
                               <td class="view-message  dont-show">
 
-
                                 <?= $row["PoolStatus_Status"] ?>
 
-
                                 <input type="hidden" name="PoolStatus_Status" value="จองแล้ว">
-
 
                               </td>
                               <td class="view-message "><?= $row["PoolStatus_OpenTime"] ?></td>
@@ -103,67 +100,7 @@ if (empty($_SESSION["Member_Username"])) {
                             </tr>
                           </form>
                         <?php } ?>
-                        <!-- <tr class="">
-        <td class="inbox-small-cells">
-          <input type="checkbox" class="mail-checkbox">
-        </td>
-        <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-        <td class="view-message dont-show"><a href="mail_view.php">Facebook</a></td>
-        <td class="view-message"><a href="mail_view.php">New Friendship Request</a></td>
-        <td class="view-message inbox-small-cells"></td>
-        <td class="view-message text-right">March 13</td>
-      </tr>
-      <tr class="">
-        <td class="inbox-small-cells">
-          <input type="checkbox" class="mail-checkbox">
-        </td>
-        <td class="inbox-small-cells"><i class="fa fa-star inbox-started"></i></td>
-        <td class="view-message dont-show"><a href="mail_view.php">Mark Webber <span class="label label-danger pull-right">urgent</span></a></td>
-        <td class="view-message"><a href="mail_view.php">The server is down</a></td>
-        <td class="view-message inbox-small-cells"></td>
-        <td class="view-message text-right">March 09</td>
-      </tr>
-      <tr class="">
-        <td class="inbox-small-cells">
-          <input type="checkbox" class="mail-checkbox">
-        </td>
-        <td class="inbox-small-cells"><i class="fa fa-star inbox-started"></i></td>
-        <td class="view-message dont-show"><a href="mail_view.php">Facebook</a></td>
-        <td class="view-message"><a href="mail_view.php">New message from Patrick S.</a></td>
-        <td class="view-message inbox-small-cells"><i class="fa fa-paperclip"></i></td>
-        <td class="view-message text-right">March 08</td>
-      </tr>
-      <tr class="">
-        <td class="inbox-small-cells">
-          <input type="checkbox" class="mail-checkbox">
-        </td>
-        <td class="inbox-small-cells"><i class="fa fa-star inbox-started"></i></td>
-        <td class="view-message dont-show">Paypal inc.</td>
-        <td class="view-message">New payment received</td>
-        <td class="view-message inbox-small-cells"><i class="fa fa-paperclip"></i></td>
-        <td class="view-message text-right">March 04</td>
-      </tr>
-      <tr class="">
-        <td class="inbox-small-cells">
-          <input type="checkbox" class="mail-checkbox">
-        </td>
-        <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-        <td class="view-message dont-show">Andrea <span class="label label-success pull-right">girlfriend</span></td>
-        <td class="view-message view-message">Weekend plans</td>
-        <td class="view-message inbox-small-cells"></td>
-        <td class="view-message text-right">March 04</td>
-      </tr>
 
-      <tr class="">
-        <td class="inbox-small-cells">
-          <input type="checkbox" class="mail-checkbox">
-        </td>
-        <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-        <td class="view-message dont-show">Evelyn <span class="label label-info pull-right">family</span></td>
-        <td class="view-message view-message">Surprise party</td>
-        <td class="view-message inbox-small-cells"></td>
-        <td class="view-message text-right">February 19</td>
-      </tr> -->
                       </tbody>
                     </table>
                   </div>
@@ -174,24 +111,7 @@ if (empty($_SESSION["Member_Username"])) {
         </section>
         <!-- /wrapper -->
       </section>
-      <!-- /MAIN CONTENT -->
-      <!--main content end-->
-      <!--footer start-->
-      <!-- <footer class="site-footer">
-        <div class="text-center">
-          <p>
-            &copy; Copyrights <strong>Dashio</strong>. All Rights Reserved
-          </p>
-          <div class="credits">
-           
-            Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
-          </div>
-          <a href="inbox.php#" class="go-top">
-            <i class="fa fa-angle-up"></i>
-          </a>
-        </div>
-      </footer> -->
-      <!--footer end-->
+
   </section>
   <!-- js placed at the end of the document so the pages load faster -->
   <script src="lib/jquery/jquery.min.js"></script>

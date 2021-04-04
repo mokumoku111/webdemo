@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php include "../connect.php";
+?>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,18 +30,33 @@
       *********************************************************************************************************************************************************** -->
   <div id="login-page">
     <div class="container">
-      <form class="form-login" action="check_login.php" method="POST">
-        <h2 class="form-login-heading">LOG IN</h2>
+      <form class="form-login" action="check_register.php" method="POST">
+        <h2 class="form-login-heading">Register</h2>
         <div class="login-wrap">
-          <input type="text" name="Member_Username" class="form-control" placeholder="UserName" autofocus>
+          <input type="text" name="Member_Fname" class="form-control" placeholder="ชื่อ" autofocus>
           <br>
-          <input type="password" name="Member_Password" class="form-control" placeholder="Password">
+          <input type="text" name="Member_Lname" class="form-control" placeholder="นามสกุล">
           <br>
-          <button class="btn btn-theme btn-block" href="index.php" type="submit"> SIGN IN </button>
-          
+          <input type="number" name="Member_PhoneNumber" class="form-control" placeholder="เบอร์โทรศัพท์">
+          <br>
+          <input type="number" name="Member_IDCard" class="form-control" placeholder="เลขบัตรประชาชน">
+          <br>
+          <input type="number" name="Member_Age" class="form-control" placeholder="อายุ">
+          <br>
+          <input type="text" name="Member_Username" class="form-control" placeholder="ชื่อผู้ใช้">
+          <br>
+          <input type="password" name="Member_Password" class="form-control" placeholder="รหัสผ่าน">
+          <br>
+          <input type="email" name="Member_Email" class="form-control" placeholder="อีเมล์">
+          <br>
 
-          <a class="btn btn-theme btn-block" href="register.php">REGISTER</a>
+          <button class="btn btn-theme btn-block" href="index.php" type="submit" name="register_member" > REGISTER </button>
+          <button class="btn btn-theme btn-block" href="index.php" type="submit" name="cancel"> CANCEL </button>
+          <!-- <a class="btn btn-theme btn-block" href="../register_member.php">REGISTER</a> -->
         </div>
+
+        
+
         <!-- Modal -->
         <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
           <div class="modal-dialog">
