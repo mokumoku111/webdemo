@@ -21,14 +21,21 @@
     $stmt->bindParam(6, $_POST["Member_Username"]);
     $stmt->bindParam(7, $_POST["Member_Password"]);
     $stmt->bindParam(8, $_POST["Member_Email"]);
-    $stmt->execute();
-    $row = $stmt->fetch();
     if ($stmt->execute())
-    echo '<script type="text/javascript"> alert ("สมัครสมาชิกสำเร็จ") </script>';
-    header("location:login.php");
+        echo '<script type="text/javascript"> alert ("สมัครสมาชิกสำเร็จ") </script>';
+    header("location: login.php");
+
+    // {
+    //     echo '<script type="text/javascript"> alert ("สมัครสมาชิกสำเร็จ") </script>';
+    //     header("location:login.php");
+    //     }
+    // $row = $stmt->fetch();
+    // if ($row = $stmt->fetch();){
+    // echo '<script type="text/javascript"> alert ("สมัครสมาชิกสำเร็จ") </script>';
+    // header("location:login.php");
+    // }
     ?>
 
 </body>
 
 </html>
-

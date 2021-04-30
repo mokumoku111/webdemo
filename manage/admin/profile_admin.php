@@ -27,6 +27,7 @@ if (empty($_SESSION["Member_Username"])) {
   <link href="css/style.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet">
 
+</head>
 
 <body>
   <section id="container">
@@ -38,6 +39,7 @@ if (empty($_SESSION["Member_Username"])) {
       <div class="sidebar-toggle-box">
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
       </div>
+
       <?php include "editmenu.php"; ?>
       <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
@@ -52,8 +54,13 @@ if (empty($_SESSION["Member_Username"])) {
               <section class="panel">
                 <header class="panel-heading wht-bg">
                   <h4 class="gen-case">
-                    จองเวลาการใช้สระ
-
+                    <?php
+                    $stmt = $pdo->prepare("SELECT Member_Fname, Member_Lname FROM member WHERE Member_Username = '$USER' ");
+                    $stmt->execute();
+                    while ($row = $stmt->fetch()) {
+                    ?>
+                      <class="centered">เวลาการใช้สระของ <?= $row["Member_Fname"] ?> <?= $row["Member_Lname"] ?></class=>
+                      <?php } ?>
                   </h4>
                 </header>
                 <div class="panel-body minimal">
@@ -74,8 +81,12 @@ if (empty($_SESSION["Member_Username"])) {
                         </tr>
 
                         <?php
-                        $stmt = $pdo->prepare("SELECT * FROM poolstatus WHERE PoolStatus_Status = 'ว่าง' ");
+                        $stmt = $pdo->prepare("SELECT * FROM member,poolstatus WHERE member.Member_ID = poolstatus.User_ID AND poolstatus.
+                        PoolStatus_Status = 'จองแล้ว'");
                         $stmt->execute();
+
+                        $name = $pdo->prepare("SELECT Member_Fname FROM member,poolstatus WHERE member.Member_ID = poolstatus.User_ID");
+
                         while ($row = $stmt->fetch()) {
                         ?>
                           <form action="reserve.php" method="post">
@@ -87,20 +98,18 @@ if (empty($_SESSION["Member_Username"])) {
 
                               </td>
                               <td class="inbox-small-cells"></td>
-                              <td class="view-message  dont-show">
-
+                              <td class="view-message">
                                 <?= $row["PoolStatus_Status"] ?>
 
-                                <input type="hidden" name="PoolStatus_Status" value="จองแล้ว">
-
+                                <!-- <input type="hidden" name="PoolStatus_Status" value="จองแล้ว"> -->
+                                
                               </td>
                               <td class="view-message "><?= $row["PoolStatus_OpenTime"] ?></td>
                               <td class="view-message "><?= $row["PoolStatus_CloseTime"] ?></td>
-                              <td class="view-message "><input type="submit" class="btn btn-success" value="จองเวลา" /></td>
+                              <td class="view-message "><input type="submit" class="btn btn-danger" value="ยกเลิก" /></td>
                             </tr>
                           </form>
                         <?php } ?>
-
                       </tbody>
                     </table>
                   </div>
@@ -108,9 +117,8 @@ if (empty($_SESSION["Member_Username"])) {
               </section>
             </div>
 
-        </section>
-        <!-- /wrapper -->
-      </section>
+        
+      
 
   </section>
   <!-- js placed at the end of the document so the pages load faster -->
@@ -122,7 +130,30 @@ if (empty($_SESSION["Member_Username"])) {
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
+  <!-- MAP SCRIPT - ALL CONFIGURATION IS PLACED HERE - VIEW OUR DOCUMENTATION FOR FURTHER INFORMATION -->
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASm3CwaK9qtcZEWYa-iQwHaGi3gcosAJc&sensor=false"></script>
+  <script>
+    $('.contact-map').click(function() {
 
+      //google map in tab click initialize
+      function initialize() {
+        var myLatlng = new google.maps.LatLng(40.6700, -73.9400);
+        var mapOptions = {
+          zoom: 11,
+          scrollwheel: false,
+          center: myLatlng,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        var marker = new google.maps.Marker({
+          position: myLatlng,
+          map: map,
+          title: 'Dashio Admin Theme!'
+        });
+      }
+      google.maps.event.addDomListener(window, 'click', initialize);
+    });
+  </script>
 </body>
 
 </html>

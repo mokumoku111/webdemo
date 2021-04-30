@@ -2,6 +2,7 @@
 <html lang="en">
 <?php include "../connect.php";
 ?>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,34 +51,35 @@
           <input type="email" name="Member_Email" class="form-control" placeholder="อีเมล์">
           <br>
 
-          <button class="btn btn-theme btn-block" href="index.php" type="submit" name="register_member" > REGISTER </button>
-          <button class="btn btn-theme btn-block" href="index.php" type="submit" name="cancel"> CANCEL </button>
+          <button class="btn btn-theme btn-block" type="submit" name="register_member"> REGISTER </button>
+          <a class="btn btn-theme btn-block" href="login.php">CANCEL</a>
+          <!-- <button class="btn btn-theme btn-block" href="index.php" type="submit" name="cancel"> CANCEL </button> -->
           <!-- <a class="btn btn-theme btn-block" href="../register_member.php">REGISTER</a> -->
         </div>
+      </form>
 
-        
 
-        <!-- Modal -->
-        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Forgot Password ?</h4>
-              </div>
-              <div class="modal-body">
-                <p>Enter your e-mail address below to reset your password.</p>
-                <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
-              </div>
-              <div class="modal-footer">
-                <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-                <button class="btn btn-theme" type="button">Submit</button>
-              </div>
+      <!-- Modal -->
+      <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title">Forgot Password ?</h4>
+            </div>
+            <div class="modal-body">
+              <p>Enter your e-mail address below to reset your password.</p>
+              <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+            </div>
+            <div class="modal-footer">
+              <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+              <button class="btn btn-theme" type="button">Submit</button>
             </div>
           </div>
         </div>
-        <!-- modal -->
-      </form>
+      </div>
+      <!-- modal -->
+
     </div>
   </div>
   <!-- js placed at the end of the document so the pages load faster -->

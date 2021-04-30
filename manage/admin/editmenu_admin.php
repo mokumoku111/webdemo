@@ -50,7 +50,7 @@ $USER = $_SESSION["Member_Username"];
         </a>
       </li>
       <li class="sub-menu">
-        <a href="edit_profile.php">
+        <a href="profile.php">
           <i class="fa fa-user"></i>
           <span>แก้ไขโปรไฟล์</span>
         </a>
