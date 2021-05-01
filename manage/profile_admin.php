@@ -40,7 +40,7 @@ if (empty($_SESSION["Member_Username"])) {
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
       </div>
 
-      <?php include "editmenu.php"; ?>
+      <?php include "editmenu_admin.php"; ?>
       <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
         *********************************************************************************************************************************************************** -->

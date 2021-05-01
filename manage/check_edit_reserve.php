@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php include "../connect.php";
+?>
 
 <head>
   <meta charset="utf-8">
@@ -29,39 +31,45 @@
       *********************************************************************************************************************************************************** -->
   <div id="login-page">
     <div class="container">
-      <form class="form-login" action="check_login_admin.php" method="POST">
-        <h2 class="form-login-heading">LOG IN</h2>
+      <form class="form-login" action="admin_edit_reserve.php" method="POST">
+        <h2 class="form-login-heading">EDIT TIME RESERVE</h2>
         <div class="login-wrap">
-          <input type="text" name="Member_Username" class="form-control" placeholder="UserName" autofocus>
+          <input type="text" name="Member_Fname" class="form-control" placeholder="สถานะ ว่าง/ไม่ว่าง" autofocus>
           <br>
-          <input type="password" name="Member_Password" class="form-control" placeholder="Password">
+          <input type="text" name="Member_Lname" class="form-control" placeholder="เวลาเปิด">
           <br>
-          <button class="btn btn-theme btn-block" href="index.php" type="submit"> SIGN IN </button>
-          
+          <input type="number" name="Member_PhoneNumber" class="form-control" placeholder="เวลาปิด">
+          <br>
 
-          <a class="btn btn-theme btn-block" href="register.php">REGISTER</a>
+          <button class="btn btn-theme btn-block" type="submit" name="admin_edit_reserve"> แก้ไข </button>
+          <a class="btn btn-theme btn-block" href="index_login_admin.php">CANCEL</a>
+          <!-- <button class="btn btn-theme btn-block" href="index.php" type="submit" name="cancel"> CANCEL </button> -->
+          <!-- <a class="btn btn-theme btn-block" href="../register_member.php">REGISTER</a> -->
         </div>
-        <!-- Modal -->
-        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Forgot Password ?</h4>
-              </div>
-              <div class="modal-body">
-                <p>Enter your e-mail address below to reset your password.</p>
-                <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
-              </div>
-              <div class="modal-footer">
-                <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-                <button class="btn btn-theme" type="button">Submit</button>
-              </div>
+      </form>
+
+
+      <!-- Modal -->
+      <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title">Forgot Password ?</h4>
+            </div>
+            <div class="modal-body">
+              <p>Enter your e-mail address below to reset your password.</p>
+              <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+            </div>
+            <div class="modal-footer">
+              <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+              <button class="btn btn-theme" type="button">Submit</button>
             </div>
           </div>
         </div>
-        <!-- modal -->
-      </form>
+      </div>
+      <!-- modal -->
+
     </div>
   </div>
   <!-- js placed at the end of the document so the pages load faster -->

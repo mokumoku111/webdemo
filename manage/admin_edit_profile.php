@@ -40,7 +40,7 @@ if (empty($_SESSION["Member_Username"])) {
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
       </div>
 
-      <?php include "editmenu.php"; ?>
+      <?php include "editmenu_admin.php"; ?>
       <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
         *********************************************************************************************************************************************************** -->
@@ -96,18 +96,20 @@ if (empty($_SESSION["Member_Username"])) {
                             <tr>
                               <td></td>
                               <td></td>
-                              <td><?= $row["Member_ID"] ?></td>
-                              <td><?= $row["Member_Fname"] ?></td>
-                              <td><?= $row["Member_Lname"] ?></td>
-                              <td><?= $row["Member_PhoneNumber"] ?></td>
-                              <td><?= $row["Member_IDCard"] ?></td>
-                              <td><?= $row["Member_Age"] ?></td>
-                              <td><?= $row["Member_Username"] ?></td>
-                              <td><?= $row["Member_Password"] ?></td>
-                              <td><?= $row["Member_Email"] ?></td>
+                              <td><?php echo $row["Member_ID"] ?></td>
+                              <td><?php echo $row["Member_Fname"] ?></td>
+                              <td><?php echo $row["Member_Lname"] ?></td>
+                              <td><?php echo $row["Member_PhoneNumber"] ?></td>
+                              <td><?php echo $row["Member_IDCard"] ?></td>
+                              <td><?php echo $row["Member_Age"] ?></td>
+                              <td><?php echo $row["Member_Username"] ?></td>
+                              <td><?php echo $row["Member_Password"] ?></td>
+                              <td><?php echo $row["Member_Email"] ?></td>
 
-                              <td><input type="submit" class="btn btn-success" value="Edit" /></td>
-                              <td><input type="submit" class="btn btn-danger" value="Delete" /></td>
+                              <td><a class="btn btn-success" href="#">EDIT</a></td>
+                              <td><a class="btn btn-danger" href="admin_delete_from.php?id=<?php echo $row['Member_ID']; ?>">DELETE</a></td>
+
+                              <!-- <td><a class="btn btn-danger" href="admin_delete_from.php?id=<?php echo $row['Member_ID']; ?>">DELETE</a></td> -->
                               <!-- <td><a href='#' onclick='confirmEdit("<?= $row["Pid"] ?>")' class="btn btn-success"> Remove </a></td>
                               <td><a href='#' onclick='confirmDelete("<?= $row["Pid"] ?>")' class="btn btn-danger"> Remove </a></td> -->
                             </tr>

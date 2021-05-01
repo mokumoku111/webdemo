@@ -38,19 +38,19 @@ $USER = $_SESSION["Member_Username"];
         <h5 class="centered"><?= $row["Member_Fname"] ?> <?= $row["Member_Lname"] ?></h5>
       <?php } ?>
       <li class="mt">
-        <a href="index_login.php">
+        <a href="index_login_admin.php">
           <i class="fa fa-thumb-tack"></i>
-          <span>จองเวลา</span>
+          <span>แก้ไขเวลา</span>
         </a>
       </li>
       <li class="sub-menu">
-        <a href="profile.php">
+        <a href="profile_admin.php">
           <i class="fa fa-cogs"></i>
           <span>แก้ไขการจอง</span>
         </a>
       </li>
       <li class="sub-menu">
-        <a href="profile.php">
+        <a href="admin_edit_profile.php">
           <i class="fa fa-user"></i>
           <span>แก้ไขโปรไฟล์</span>
         </a>

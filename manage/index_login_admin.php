@@ -27,7 +27,6 @@ if (empty($_SESSION["Member_Username"])) {
   <link href="css/style.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet">
 
-</head>
 
 <body>
   <section id="container">
@@ -39,8 +38,7 @@ if (empty($_SESSION["Member_Username"])) {
       <div class="sidebar-toggle-box">
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
       </div>
-
-      <?php include "editmenu.php"; ?>
+      <?php include "editmenu_admin.php"; ?>
       <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
         *********************************************************************************************************************************************************** -->
@@ -54,13 +52,8 @@ if (empty($_SESSION["Member_Username"])) {
               <section class="panel">
                 <header class="panel-heading wht-bg">
                   <h4 class="gen-case">
-                    <?php
-                    $stmt = $pdo->prepare("SELECT Member_Fname, Member_Lname FROM member WHERE Member_Username = '$USER' ");
-                    $stmt->execute();
-                    while ($row = $stmt->fetch()) {
-                    ?>
-                      <class="centered">เวลาการใช้สระของ <?= $row["Member_Fname"] ?> <?= $row["Member_Lname"] ?></class=>
-                      <?php } ?>
+                    จองเวลาการใช้สระ
+
                   </h4>
                 </header>
                 <div class="panel-body minimal">
@@ -81,15 +74,11 @@ if (empty($_SESSION["Member_Username"])) {
                         </tr>
 
                         <?php
-                        $stmt = $pdo->prepare("SELECT * FROM member,poolstatus WHERE member.Member_ID = poolstatus.User_ID AND poolstatus.
-                        PoolStatus_Status = 'จองแล้ว'");
+                        $stmt = $pdo->prepare("SELECT * FROM poolstatus WHERE PoolStatus_Status = 'ว่าง' ");
                         $stmt->execute();
-
-                        $name = $pdo->prepare("SELECT Member_Fname FROM member,poolstatus WHERE member.Member_ID = poolstatus.User_ID");
-
                         while ($row = $stmt->fetch()) {
                         ?>
-                          <form action="reserve.php" method="post">
+                          <form action="check_edit_reserve.php" method="post">
 
                             <input type="hidden" name="PoolStatus_ID" value="<?= $row["PoolStatus_ID"] ?>">
 
@@ -98,18 +87,20 @@ if (empty($_SESSION["Member_Username"])) {
 
                               </td>
                               <td class="inbox-small-cells"></td>
-                              <td class="view-message">
+                              <td class="view-message  dont-show">
+
                                 <?= $row["PoolStatus_Status"] ?>
 
-                                <input type="hidden" name="PoolStatus_Status" value="ว่าง">
+                                <input type="hidden" name="PoolStatus_Status" value="จองแล้ว">
 
                               </td>
                               <td class="view-message "><?= $row["PoolStatus_OpenTime"] ?></td>
                               <td class="view-message "><?= $row["PoolStatus_CloseTime"] ?></td>
-                              <td class="view-message "><input type="submit" class="btn btn-danger" value="ยกเลิก" /></td>
+                              <td><a class="btn btn-success" href="admin_edit_reserve.php?id=<?php echo $row['PoolStatus_ID']; ?>">EDIT</a></td>
                             </tr>
                           </form>
                         <?php } ?>
+
                       </tbody>
                     </table>
                   </div>
@@ -117,43 +108,21 @@ if (empty($_SESSION["Member_Username"])) {
               </section>
             </div>
 
-
-
-
         </section>
-        <!-- js placed at the end of the document so the pages load faster -->
-        <script src="lib/jquery/jquery.min.js"></script>
-        <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-        <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
-        <script src="lib/jquery.scrollTo.min.js"></script>
-        <script src="lib/jquery.nicescroll.js" type="text/javascript"></script>
-        <!--common script for all pages-->
-        <script src="lib/common-scripts.js"></script>
-        <!--script for this page-->
-        <!-- MAP SCRIPT - ALL CONFIGURATION IS PLACED HERE - VIEW OUR DOCUMENTATION FOR FURTHER INFORMATION -->
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASm3CwaK9qtcZEWYa-iQwHaGi3gcosAJc&sensor=false"></script>
-        <script>
-          $('.contact-map').click(function() {
+        <!-- /wrapper -->
+      </section>
 
-            //google map in tab click initialize
-            function initialize() {
-              var myLatlng = new google.maps.LatLng(40.6700, -73.9400);
-              var mapOptions = {
-                zoom: 11,
-                scrollwheel: false,
-                center: myLatlng,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-              }
-              var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-              var marker = new google.maps.Marker({
-                position: myLatlng,
-                map: map,
-                title: 'Dashio Admin Theme!'
-              });
-            }
-            google.maps.event.addDomListener(window, 'click', initialize);
-          });
-        </script>
+  </section>
+  <!-- js placed at the end of the document so the pages load faster -->
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+  <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
+  <script src="lib/jquery.scrollTo.min.js"></script>
+  <script src="lib/jquery.nicescroll.js" type="text/javascript"></script>
+  <!--common script for all pages-->
+  <script src="lib/common-scripts.js"></script>
+  <!--script for this page-->
+
 </body>
 
 </html>

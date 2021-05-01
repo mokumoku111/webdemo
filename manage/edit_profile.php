@@ -54,12 +54,13 @@ if (empty($_SESSION["Member_Username"])) {
               <section class="panel">
                 <header class="panel-heading wht-bg">
                   <h4 class="gen-case">
+
                     <?php
                     $stmt = $pdo->prepare("SELECT Member_Fname, Member_Lname FROM member WHERE Member_Username = '$USER' ");
                     $stmt->execute();
                     while ($row = $stmt->fetch()) {
                     ?>
-                      <class="centered">เวลาการใช้สระของ <?= $row["Member_Fname"] ?> <?= $row["Member_Lname"] ?></class=>
+                      <class="centered"> แก้ไขข้อมูลของสมาชิก <?= $row["Member_Fname"] ?> <?= $row["Member_Lname"] ?></class=>
                       <?php } ?>
                   </h4>
                 </header>
@@ -73,42 +74,45 @@ if (empty($_SESSION["Member_Username"])) {
 
                           </td>
                           <td></td>
-                          <td class="view-message"><b>สถานะ</b></td>
-                          <td class="view-message"><b>Open</b></td>
-                          <td class="view-message"><b>close</b></td>
+                          <td class="view-message"><b>Member ID</b></td>
+                          <td class="view-message"><b>Member First Name</b></td>
+                          <td class="view-message"><b>Member Last Name</b></td>
+                          <td class="view-message"><b>Phone Number</b></td>
+                          <td class="view-message"><b>ID Card</b></td>
+                          <td class="view-message"><b>Age</b></td>
+                          <td class="view-message"><b>Username</b></td>
+                          <td class="view-message"><b>Password</b></td>
+                          <td class="view-message"><b>Email</b></td>
                           <td class="view-message"><b></b></td>
 
                         </tr>
 
                         <?php
-                        $stmt = $pdo->prepare("SELECT * FROM member,poolstatus WHERE member.Member_ID = poolstatus.User_ID AND poolstatus.
-                        PoolStatus_Status = 'จองแล้ว'");
-                        $stmt->execute();
+                        $stmt = $pdo->prepare("SELECT * FROM member WHERE Member_Username = '$USER' ");
+                        $stmt->execute(); ?>
 
-                        $name = $pdo->prepare("SELECT Member_Fname FROM member,poolstatus WHERE member.Member_ID = poolstatus.User_ID");
+                        <?php while ($row = $stmt->fetch()) { ?>
+                          <form action="check_editprofile.php" method="post">
+                            <tr>
+                              <td></td>
+                              <td></td>
+                              <td><?= $row["Member_ID"] ?></td>
+                              <td><?= $row["Member_Fname"] ?></td>
+                              <td><?= $row["Member_Lname"] ?></td>
+                              <td><?= $row["Member_PhoneNumber"] ?></td>
+                              <td><?= $row["Member_IDCard"] ?></td>
+                              <td><?= $row["Member_Age"] ?></td>
+                              <td><?= $row["Member_Username"] ?></td>
+                              <td><?= $row["Member_Password"] ?></td>
+                              <td><?= $row["Member_Email"] ?></td>
 
-                        while ($row = $stmt->fetch()) {
-                        ?>
-                          <form action="reserve.php" method="post">
-
-                            <input type="hidden" name="PoolStatus_ID" value="<?= $row["PoolStatus_ID"] ?>">
-
-                            <tr class="unread">
-                              <td class="inbox-small-cells">
-
-                              </td>
-                              <td class="inbox-small-cells"></td>
-                              <td class="view-message">
-                                <?= $row["PoolStatus_Status"] ?>
-
-                                <input type="hidden" name="PoolStatus_Status" value="ว่าง">
-
-                              </td>
-                              <td class="view-message "><?= $row["PoolStatus_OpenTime"] ?></td>
-                              <td class="view-message "><?= $row["PoolStatus_CloseTime"] ?></td>
-                              <td class="view-message "><input type="submit" class="btn btn-danger" value="ยกเลิก" /></td>
+                              <td><input type="submit" class="btn btn-success" value="Edit" /></td>
+                              <!-- <td><input type="submit" class="btn btn-danger" value="Delete" /></td> -->
+                              <!-- <td><a href='#' onclick='confirmEdit("<?= $row["Pid"] ?>")' class="btn btn-success"> Remove </a></td>
+                              <td><a href='#' onclick='confirmDelete("<?= $row["Pid"] ?>")' class="btn btn-danger"> Remove </a></td> -->
                             </tr>
                           </form>
+
                         <?php } ?>
                       </tbody>
                     </table>
